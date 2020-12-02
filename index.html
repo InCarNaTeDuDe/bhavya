@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Birthday Special for Bhavya k</title>
+    <title>Birthday Special for Bhavya k</title>
     <meta property="og:title" content="Birthday Special &#127874; for Bhavya Kol****ra" />
     <meta property="og:description"
         content="&#127775; Small Glimpse &#128161; to make Bhavya K birthday Special! &#128230; " />
@@ -31,13 +31,14 @@
             background: url(https://raw.githubusercontent.com/InCarNaTeDuDe/bhavya/master/imgs/bg.jpg);
             background-size: calc(100% - var(--x));
             background-position: center;
+            opacity: .5;
         }
 
-        section .girl {
+        section .teddy {
             position: absolute;
             top: 0;
-            width: 400px;
-            left: 65%;
+            width: 25%;
+            left: 75%;
             max-width: calc(400px - var(--x)/50);
         }
 
@@ -46,18 +47,56 @@
             top: 50%;
             width: 100%;
             color: #FFF;
-            font-size: 8em;
+            font-size: 10vw;
             text-shadow: 0 5px 10px rgba(0, 0, 0, .2);
             transform: translate(calc(400px - var(--x) * 2), -50%);
+        }
+
+        body {
+            overflow: hidden;
+            background: #000;
+            height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+        }
+
+        span {
+            position: absolute;
+            pointer-events: none;
+            background: #FFF;
+            animation: animate 1s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: scale(0) translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1) translateY(-500%) rotate(360deg);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
-    <section>
+    <section title="Move your mouse from right to left to see the magic">
         <div id="bg">
-            <h2>Happy Birthday</h2>
-            <img src="https://raw.githubusercontent.com/InCarNaTeDuDe/bhavya/master/imgs/bear-unscreen.gif" class="girl" alt="cake">
+            <h2>Happy Birthday Bhavya K</h2>
+            <img src="https://raw.githubusercontent.com/InCarNaTeDuDe/bhavya/master/imgs/bear-unscreen.gif"
+                class="teddy" alt="cake">
         </div>
     </section>
     <script>
@@ -65,6 +104,34 @@
         doc.addEventListener("mousemove", (e) => {
             doc.style.setProperty("--x", e.clientX + "px")
         })
+        const colors = ["#219653", "#e91e63", "#ffeb3b", "#74ff1d"];
+
+        function createSquare() {
+            const section = document.querySelector("section");
+            const square = document.createElement("span");
+
+            var size = Math.random() * 50;
+
+            square.style.width = 20 + size + "px";
+            square.style.height = 20 + size + "px";
+
+            square.style.top = Math.random() * innerHeight + "px";
+            square.style.left = Math.random() * innerWidth + "px";
+
+            const bg = colors[Math.floor(Math.random() * colors.length)]
+
+            square.style.background = bg;
+
+            section.appendChild(square);
+
+            setTimeout(() => {
+                square.remove()
+            }, 5000)
+
+        }
+        setInterval(() => {
+            createSquare()
+        }, 150)
     </script>
 </body>
 
